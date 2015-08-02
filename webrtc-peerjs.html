@@ -5,7 +5,7 @@
 
 <body>
   <h1>Welcome to Meteor!</h1>
-
+  {{> loginButtons}}
   {{> hello}}
 </body>
 
@@ -21,8 +21,9 @@
     <div>
       <p>Your id: <span id="myPeerId">...</span></p>
       <p>Make a call</p><br>
-      <input type="text" placeholder="Call user id..." id="remotePeerId">
-      <p><a href="#" id="makeCall">Call</a></p>
-      <p><a href="#" id="endCall">End call</a></p>
+      {{#each users}}
+        <p><a href="#" id="makeCall">Call {{#each emails}}{{address}}{{/each}}</a></p>
+      {{/each}}
+      <p><a href="#" id="endCall">End Call</a></p>
     </div>
 </template>
