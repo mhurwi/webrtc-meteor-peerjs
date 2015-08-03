@@ -24,7 +24,7 @@ if (Meteor.isClient) {
 
   Template.hello.onCreated(function () {
     Meteor.subscribe("presences");
-    Meteor.subscribe("onlineUsers");
+    Meteor.subscribe("users");
 
     window.peer = new Peer({
       key: '2p9ffp7ol6p3nmi',  // change this key
@@ -77,7 +77,7 @@ if (Meteor.isServer) {
   Meteor.publish('presences', function() {
     return Presences.find({}, { userId: true });
   });
-  Meteor.publish("onlineUsers", function () {
+  Meteor.publish("users", function () {
     return Meteor.users.find({}, {fields: {"profile.peerId": true, "emails.address": true} });
   });
 }
