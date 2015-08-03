@@ -62,7 +62,7 @@ if (Meteor.isClient) {
                       navigator.msGetUserMedia );
 
     // get audio/video
-    navigator.getUserMedia({audio:false, video: true}, function (stream) {
+    navigator.getUserMedia({audio:true, video: true}, function (stream) {
       //display video
       $('#myVideo').prop('src', URL.createObjectURL(stream));
       window.localStream = stream;
