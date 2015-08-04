@@ -6,7 +6,8 @@ if (Meteor.isClient) {
       window.currentCall = outgoingCall;
       outgoingCall.on('stream', function (remoteStream) {
         window.remoteStream = remoteStream;
-        $('#theirVideo').prop('src', URL.createObjectURL(remoteStream));
+        var video = document.getElementById("theirVideo")
+        video.src = URL.createObjectURL(remoteStream);
       });
     },
     "click #endCall": function () {
@@ -52,7 +53,8 @@ if (Meteor.isClient) {
       incomingCall.answer(window.localStream);
       incomingCall.on('stream', function (remoteStream) {
         window.remoteStream = remoteStream;
-        $('#theirVideo').prop('src', URL.createObjectURL(remoteStream));
+        var video = document.getElementById("theirVideo")
+        video.src = URL.createObjectURL(remoteStream);
       });
     });
 
@@ -64,7 +66,8 @@ if (Meteor.isClient) {
     // get audio/video
     navigator.getUserMedia({audio:true, video: true}, function (stream) {
       //display video
-      $('#myVideo').prop('src', URL.createObjectURL(stream));
+      var video = document.getElementById("myVideo");
+      video.src = URL.createObjectURL(stream);
       window.localStream = stream;
     }, function (error) { console.log(error); }
     );
